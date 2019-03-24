@@ -1,0 +1,124 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i');
+
+body {
+  font-family: 'Lato' !important,
+    sans-serif !important;
+}
+
+// Colors
+$black: #000000;
+$white: #ffffff;
+$coverHover: rgba(0, 0, 0, 0.700);
+$quality: #adb5bd;
+$lemon: #6aca45;
+$primaryBook: #1f3c88;
+$darkBook: #04072e;
+$btnPrimary: #2441a0;
+
+.bg-primary-book {
+  background-color: $primaryBook;
+}
+
+.bg-dark-book {
+  background-color: $darkBook;
+}
+
+.btn-primary {
+  background-color: $btnPrimary !important;
+  border: 0 !important;
+}
+
+* {
+  outline: 0 !important;
+}
+
+.link-cover {
+  position: relative;
+  display: block;
+  cursor: pointer;
+
+  .content-cover {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+
+    p {
+      color: $white;
+    }
+
+    h4.title-cover {
+      width: 80%;
+      text-align: center;
+      color: $white;
+      font-weight: 400;
+    }
+
+    i {
+      color: rgb(192, 167, 24);
+    }
+  }
+
+  &:hover {
+    .content-cover {
+      opacity: 1;
+      background: $coverHover;
+    }
+  }
+}
+
+.img-bg {
+  height: 400px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.content-bg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.55);
+
+  h1 {
+    margin-left: 1em;
+  }
+}
+
+button.navbar-toggler {
+  border: none;
+}
+
+.img-book {
+  width: 40px;
+  height: auto;
+}
+
+.img-cover {
+  width: 100% !important;
+}
+
+.img-cover-list {
+  width: 50px;
+  height: auto;
+}
+
+.icon-offers {
+  width: 15px;
+  height: auto;
+}
+
+input.form-control:focus {
+  box-shadow: 0 !important;
+}

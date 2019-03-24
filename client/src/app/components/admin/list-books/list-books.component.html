@@ -1,0 +1,50 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <button type="button" class="btn btn-sm btn-success float-right mb-3" data-toggle="modal" data-target="#modalBook"
+        (click)="resetForm()">New
+        Book</button>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cover</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Idioma</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Oferta</th>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of books | paginate: { itemsPerPage: 6, currentPage: pageActual }; let i = index">
+            <th>{{ i + 1 }}</th>
+            <th><img [src]="book.portada" class="img-cover-list" [alt]="book.titulo"></th>
+            <td><small class="font-weight-bold">{{ book.titulo }}</small></td>
+            <td><small>{{ book.autor}}</small></td>
+            <td><small>{{ book.idioma }}</small></td>
+            <td>
+              <small class="font-weight-bold text-danger">
+                <span *ngIf="book.idioma === 'Inglés'">$ {{ book.precio }}</span>
+                <span *ngIf="book.idioma === 'Español'">€ {{ book.precio }}</span>
+              </small>
+            </td>
+            <td><small>{{ book.oferta === 1 ? 'SI' : 'NO' }}</small></td>
+            <td>
+              <button href="/admin/list-books" class="btn btn-sm btn-primary" (click)="onPreUpdateBook(book)"
+                data-toggle="modal" data-target="#modalBook">Update</button>
+            </td>
+            <td>
+              <a href="/admin/list-books" (click)="ondeleteBook(book.id)" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+    </div>
+  </div>
+</div>
+
+<app-modal></app-modal>

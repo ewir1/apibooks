@@ -1,0 +1,36 @@
+<div class="bg-primary-book">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary-book container">
+    <a class="navbar-brand" [routerLink]="['/']"><img src="assets/notebook.svg" class="img-book" alt="">{{ app_name }}
+      <small>v1.0</small></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNavbar">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a class="btn btn-sm btn-warning text-danger font-weight-bold rounded-pill" [routerLink]="['/offers']">Offers <img
+              src="assets/discount.svg" class="icon-offers"></a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="!isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a [routerLink]="['/user/register']" class="nav-link"><i class="fas fa-user"></i> Register</a>
+        </li>
+        <li *ngIf="isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a [routerLink]="['/user/profile']" class="nav-link"><i class="far fa-user"></i> Profile</a>
+        </li>
+        <li *ngIf="isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a [routerLink]="['/admin/list-books']" class="nav-link"><i class="fas fa-list-ul"></i> List Books</a>
+        </li>
+        <li *ngIf="!isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a [routerLink]="['/user/login']" class="nav-link"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+        <li *ngIf="isLogged" class="nav-item text-center" routerLinkActive="active font-weight-bold">
+          <a (click)="onLogout()" class="nav-link link-cover"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

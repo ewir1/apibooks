@@ -1,0 +1,43 @@
+<section id="register">
+  <div class="container">
+    <div class="row my-5">
+
+      <div class="col-md-4 mx-auto">
+        <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+          <h1 class="h3 mb-4 font-weight-normal text-center">Register</h1>
+          <div class="alert alert-danger text-center" role="alert" *ngIf="isError">
+            {{ msgError }}
+          </div>
+          <div class="form-group">
+            <input type="text" #name="ngModel" name="name" class="form-control mb-4" placeholder="Name" [(ngModel)]="user.name"
+              required minlength="4" maxlength="15">
+          </div>
+          <div class="alert alert-danger text-center" role="alert" *ngIf="name.touched && !name.valid">
+            <div *ngIf="name.errors.required">Name is required</div>
+            <div *ngIf="name.errors.minlength">Name must be at least 4 characters</div>
+          </div>
+          <div class="form-group">
+            <input type="email" #email="ngModel" name="email" class="form-control mb-4" placeholder="Email" [(ngModel)]="user.email"
+              required minlength="8">
+          </div>
+          <div class="alert alert-danger text-center" role="alert" *ngIf="email.touched && !email.valid">
+            <div *ngIf="email.errors.required">Email is required</div>
+            <div *ngIf="email.errors.minlength">Email must be at least 8 characters</div>
+          </div>
+          <div class="form-group">
+            <input type="password" #password="ngModel" name="password" class="form-control mb-4" placeholder="Password"
+              [(ngModel)]="user.password" required minlength="5" maxlength="16">
+          </div>
+          <div class="alert alert-danger text-center" role="alert" *ngIf="password.touched && !password.valid">
+            <div *ngIf="password.errors.required">Password is required</div>
+            <div *ngIf="password.errors.minlength">Password must be at least 8 characters</div>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+          <div class="form-group">
+            <a [routerLink]="['/user/login']" class="nav-link text-center">Do you have account?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

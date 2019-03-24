@@ -1,0 +1,31 @@
+<section id="books">
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-sm-6 col-md-3 my-5" *ngFor="let book of books">
+        <a [routerLink]="['/book', book.id]" class="link-cover">
+          <figure>
+            <img class="img-fluid img-cover" [src]="book.portada" [alt]="book.titulo">
+          </figure>
+          <figcaption class="content-cover">
+            <h4 class="mb-0 mr-1 title-cover"><small>{{ book.titulo }}</small></h4>
+            <p class="m-0 text-center d-sm-none d-md-block"><small>{{ book.descripcion | slice:0:80 }}...</small></p>
+            <div class="mt-3 d-flex flex-column justify-content-center align-items-center">
+              <p *ngIf="book.idioma === 'Inglés'" class="text-warning">
+                $ {{ book.precio }}
+              </p>
+              <p *ngIf="book.idioma === 'Español'" class="text-warning">
+                € {{ book.precio }}
+              </p>
+              <p>
+                {{ book.idioma }}
+              </p>
+            </div>
+          </figcaption>
+        </a>
+        <a [href]="book.link_amazon" class="btn btn-warning d-block" target="_blank">
+          Buy <i class="fab fa-amazon"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
